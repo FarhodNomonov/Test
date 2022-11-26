@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hi</h1>
+      <div class="wrapper">
+        <button id="btn_prev">Prev</button>
+        <div class="card_full">
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+          <div class="card">
+            <img src="./photo.jpg" alt="" />
+          </div>
+        </div>
+        <button id="btn_next">Next</button>
+      </div>
+    </div>
+    <script>
+      const SlideContainer = document.querySelector(".card_full"),
+        prev = document.querySelector("#btn_prev"),
+        next = document.querySelector("#btn_next");
+      prev.onclick = () => {
+        SlideContainer.scrollLeft += -200;
+      };
+      next.onclick = () => {
+        SlideContainer.scrollLeft += 200;
+      };
+      SlideContainer.onscroll = () => {
+        let ScrollPercent = Math.floor(
+          (SlideContainer.scrollLeft /
+            (SlideContainer.scrollWidth - SlideContainer.clientWidth)) *
+            100
+        );
+        ScrollPercent !== 100
+          ? next.classList.remove("disable_btn_right")
+          : next.classList.add("disable_btn_right");
+
+        ScrollPercent !== 0
+          ? prev.classList.remove("disable_btn_left")
+          : prev.classList.add("disable_btn_left");
+      };
+    </script>
+  </body>
+</html>
